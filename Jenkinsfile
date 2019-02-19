@@ -203,7 +203,7 @@ pipeline {
 				]) {
 					sh('''#!/bin/bash -e
 						RELEASE_VERSION=$(cat RELEASE_VERSION)
-						DEPLOY_NAMESPACE=$(cat DEPLOY_NAMESPACE)
+						
 						cd deploy/helm
 						echo "$KUBECONFIG_DEVELOPMENT" | base64 -d > kubeconfig
 						export KUBECONFIG=kubeconfig
