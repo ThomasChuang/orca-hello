@@ -15,10 +15,10 @@ serviceAnnotations:
 - key: consul.hashicorp.com/service-sync
   value: "true"
 
-envSecrets:
-- variable: MONGODB_PASSWORD
-  secretName: connections
-  secretKey: mongodb-password
-- variable: MYSQL_PASSWORD
-  secretName: connections
-  secretKey: mysql-password
+# envSecrets:
+# - variable: MONGODB_PASSWORD
+#   secretName: connections
+#   secretKey: mongodb-password
+# - variable: MYSQL_PASSWORD
+#   secretName: connections
+#   secretKey: mysql-password
