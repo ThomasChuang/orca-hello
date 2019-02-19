@@ -128,6 +128,7 @@ pipeline {
 					fi
 
 					echo "$RELEASE_VERSION" > RELEASE_VERSION
+					echo 
 				''')
 
 				// print build parameters
@@ -142,8 +143,8 @@ pipeline {
 					DEPLOY_PROD:         $DEPLOY_PROD
 					PROD_ENVIRONMENTS:   $PROD_ENVIRONMENTS
 					GITHUB_CREDENTIALS:  $GITHUB_CREDENTIALS
-					JENKINS_AWS_KEYS:    $JENKINS_AWS_KEYS"
-					DEPLOY_NAMESPACE:    $DEPLOY_NAMESPACE
+					JENKINS_AWS_KEYS:    $JENKINS_AWS_KEYS
+					DEPLOY_NAMESPACE:    $DEPLOY_NAMESPACE"
 				''')
 			}
 		}
