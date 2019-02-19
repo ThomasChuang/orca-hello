@@ -1,0 +1,15 @@
+# name of the environment and k8s namespace
+# leave 'namespace' value blank to use value from 'env' parameter
+env: "development"
+namespace:
+
+envVariables:
+- name: NODE_ENV
+  value: "development"
+replicas:
+  min: 1
+  max: 2
+  cpu: 90
+  memory: 70
+
+ingresses:
