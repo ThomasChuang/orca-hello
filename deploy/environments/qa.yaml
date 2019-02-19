@@ -1,11 +1,11 @@
 # name of the environment and k8s namespace
 # leave 'namespace' value blank to use value from 'env' parameter
-env: "stagin"
+env: "qa"
 namespace:
 
 envVariables:
 - name: NODE_ENV
-  value: "stagin"
+  value: "qa"
 replicas:
   min: 1
   max: 2
