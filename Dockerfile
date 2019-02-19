@@ -11,4 +11,4 @@ RUN      useradd -m -U -d /app -s /bin/bash app
 WORKDIR  /app
 COPY     --chown=app:app --from=builder /pkg /app/
 USER     app
-CMD      ["node", "dist/index.js"]
+CMD      ["node", "dist/app.js"]
