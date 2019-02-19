@@ -85,8 +85,8 @@ pipeline {
 			choices:['development','stagin'],
 			description: '''
 			   This parameter required when deploy to non-production environment.
-				 if DEPLOY_PROD=true  - the value will be empty
-				 if DEPLOY_PROD=false - deploy to the specified k8s namespace
+				 if DEPLOY_PROD=true  - this value will be by-passed.
+				 if DEPLOY_PROD=false - the selected value will be used to deploy to the specified k8s namespace.
 			'''
 		)
 	}
