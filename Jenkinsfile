@@ -185,7 +185,7 @@ pipeline {
 			}
 		}
 
-		stage("Deploy to $DEPLOY_NAMESPACE cluster") {
+		stage("Deploy to development cluster") {
 			when {
 				environment name: 'DEPLOY_PROD', value: 'false'
 				not{ environment name: 'RELEASE_VERSION', value: ''}
@@ -202,7 +202,7 @@ pipeline {
 				]) {
 					sh('''#!/bin/bash -e
 						RELEASE_VERSION=$(cat RELEASE_VERSION)
-
+						DEPLOY_NAMESPACE=$(cat DEPLOY_NAMESPACE)
 						cd deploy/helm
 						echo "$KUBECONFIG_DEVELOPMENT" | base64 -d > kubeconfig
 						export KUBECONFIG=kubeconfig
