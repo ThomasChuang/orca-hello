@@ -82,7 +82,7 @@ pipeline {
 
 		choice(
 			name: 'DEPLOY_NAMESPACE',
-			choices:['development','stagin']
+			choices:['development','stagin'],
 			description: '''
 			   This parameter required when deploy to non-production environment.
 				 if DEPLOY_PROD=true  - the value will be empty
