@@ -120,7 +120,7 @@ pipeline {
 					elif [[ "$DEPLOY_PROD" != "true" && -z "$RELEASE_VERSION" ]]; then
 						
 						if [[ "$GIT_BRANCH" != "master" ]]; then
-							RELEASE_VERSION="{$GIT_BRANCH}"
+							RELEASE_VERSION="${GIT_BRANCH}"
 						elif [[ -z "$LATEST_TAG" ]]; then
 							# no previous tags, create initial
 							RELEASE_VERSION="v0.0.1"
