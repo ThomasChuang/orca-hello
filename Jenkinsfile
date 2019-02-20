@@ -191,8 +191,7 @@ pipeline {
 
 		stage("Deploy to development cluster") {
 			when {
-				environment name: 'DEPLOY_PROD', value: 'false'
-				not{ environment name: 'RELEASE_VERSION', value: ''}
+				environment name: 'DEPLOY_PROD', value: 'false'				
 			}
 			steps {
 				withCredentials([
