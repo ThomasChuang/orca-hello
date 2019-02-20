@@ -4,7 +4,7 @@ app.get('/', function(req, res) {
 	res.send('hello world qa');
 });
 app.get('/health',function(req,res){
-	res.send('health');
+	res.send('health check. Add this for checking response change with imagePullPolicy:Always active');
 });
 
 var server = app.listen(8080, function(){
