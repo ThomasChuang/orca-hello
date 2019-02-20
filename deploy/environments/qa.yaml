@@ -13,3 +13,4 @@ replicas:
   memory: 70
 
 ingresses:
+imagePullPolicy: Always
