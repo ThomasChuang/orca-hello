@@ -22,3 +22,5 @@ serviceAnnotations:
 # - variable: MYSQL_PASSWORD
 #   secretName: connections
 #   secretKey: mysql-password
+
+imagePullPolicy: IfNotPresent
