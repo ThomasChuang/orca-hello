@@ -218,7 +218,7 @@ pipeline {
 							--set tag=${RELEASE_VERSION} ${HELM_ARGS}
 
 						sleep 10
-						sk status $TARGET_NAMESPACE}
+						sk status ${TARGET_NAMESPACE}
 
 						rm -f kubeconfig
 					''')
