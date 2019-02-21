@@ -58,6 +58,7 @@ pipeline {
 			defaultValue: '',
 			description: '''
 				this parameter affects only master branch builds
+				if DEPLOY_PROD=false and BRANCH!='master'          - use the branch name as tag
 				if DEPLOY_PROD=false and RELEASE_VERSION=''        - create new tag by incrementing minor version of previous tag
 				if DEPLOY_PROD=false and RELEASE_VERSION='v1.2.3'  - create new tag 'v1.2.3'
 
@@ -81,12 +82,12 @@ pipeline {
 			description: 'name of jenkins credentials which contains AWS access/secret keys (required for kubectl iam-authenticator)')
 
 		choice(
-			name: 'DEPLOY_NAMESPACE',
+			name: 'TARGET_NAMESPACE',
 			choices:['development','qa'],
 			description: '''
 			   This parameter required when deploy to non-production environment.
-				 if DEPLOY_PROD=true  - this value will be by-passed.
-				 if DEPLOY_PROD=false - the selected value will be used to deploy to the specified k8s namespace.
+				 if DEPLOY_PROD=true  - Only deploy the image to production cluster by PROD_ENVIRONMENTS
+				 if DEPLOY_PROD=false - The selected value will be used to deploy to the specified k8s namespace.
 			'''
 		)
 	}
@@ -120,6 +121,7 @@ pipeline {
 					elif [[ "$DEPLOY_PROD" != "true" && -z "$RELEASE_VERSION" ]]; then
 						
 						if [[ "$GIT_BRANCH" != "master" ]]; then
+							#When branch is not master and want to deploy to development/qa namespace
 							RELEASE_VERSION="${GIT_BRANCH}"
 						elif [[ -z "$LATEST_TAG" ]]; then
 							# no previous tags, create initial
@@ -210,13 +212,13 @@ pipeline {
 						echo "$KUBECONFIG_DEVELOPMENT" | base64 -d > kubeconfig
 						export KUBECONFIG=kubeconfig
 
-						sk deploy ${DEPLOY_NAMESPACE} \
+						sk deploy ${TARGET_NAMESPACE} \
 							--set org=${REGISTRY_ORG} \
 							--set app=${APP_NAME} \
 							--set tag=${RELEASE_VERSION} ${HELM_ARGS}
 
 						sleep 10
-						sk status development
+						sk status $TARGET_NAMESPACE}
 
 						rm -f kubeconfig
 					''')
