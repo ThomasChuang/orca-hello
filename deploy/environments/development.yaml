@@ -13,12 +13,12 @@ replicas:
   memory: 70
 
 ingresses:
-- name: restricted
-  domain: "orca-hello"
-  class: "nginx-public"
-  annotations:
-  - key: nginx.ingress.kubernetes.io/whitelist-source-range
-    value: "114.42.48.190" # SG office IP
+# - name: restricted
+#   domain: "movie-service"
+#   class: "nginx-public"
+#   annotations:
+#   - key: nginx.ingress.kubernetes.io/whitelist-source-range
+#     value: "202.83.111.158/32" # SG office IP
 
 
 imagePullPolicy: Always
