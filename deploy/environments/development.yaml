@@ -14,7 +14,7 @@ replicas:
 
 ingresses:
 - name: restricted
-  domain: "movie-service"
+  domain: "orca-hello"
   class: "nginx-public"
   annotations:
   - key: nginx.ingress.kubernetes.io/whitelist-source-range
