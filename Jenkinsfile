@@ -36,7 +36,6 @@ pipeline {
 		quietPeriod(0)
 		buildDiscarder(logRotator(numToKeepStr: '30', daysToKeepStr: '90'))
 		timestamps()
-		ansiColor('xterm')
 	}
 
 	parameters {
