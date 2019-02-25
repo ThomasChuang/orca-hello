@@ -1,0 +1,16 @@
+# name of the environment and k8s namespace
+# leave 'namespace' value blank to use value from 'env' parameter
+env: "qa"
+namespace:
+
+envVariables:
+- name: NODE_ENV
+  value: "qa"
+replicas:
+  min: 1
+  max: 2
+  cpu: 90
+  memory: 70
+
+ingresses:
+imagePullPolicy: Always

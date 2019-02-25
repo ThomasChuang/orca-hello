@@ -1,0 +1,24 @@
+# name of the environment and k8s namespace
+# leave 'namespace' value blank to use value from 'env' parameter
+env: "development"
+namespace:
+
+envVariables:
+- name: NODE_ENV
+  value: "development"
+replicas:
+  min: 1
+  max: 2
+  cpu: 90
+  memory: 70
+
+ingresses:
+- name: restricted
+  domain: "orca-hello.com.tw"
+  class: "nginx-public"
+  annotations:
+  - key: nginx.ingress.kubernetes.io/whitelist-source-range
+    value: "202.39.237.203/32" # TW office IP
+
+
+imagePullPolicy: Always

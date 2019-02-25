@@ -1,0 +1,26 @@
+app: "orca-hello"
+resources:
+  limits:
+    cpu: 500m
+    memory: 1000Mi
+  requests:
+    cpu: 300m
+    memory: 700Mi
+
+ingresses:
+
+serviceAnnotations:
+- key: consul.hashicorp.com/service-port
+  value: "8080"
+- key: consul.hashicorp.com/service-sync
+  value: "true"
+
+# envSecrets:
+# - variable: MONGODB_PASSWORD
+#   secretName: connections
+#   secretKey: mongodb-password
+# - variable: MYSQL_PASSWORD
+#   secretName: connections
+#   secretKey: mysql-password
+
+imagePullPolicy: IfNotPresent
